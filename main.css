@@ -10,6 +10,13 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: #f4cccc;
+}
+
+header {
+	font-size: 4vmin;
+	color: #000000;
+	letter-spacing: 1vmin;
 }
 
 h1 {
@@ -21,15 +28,13 @@ h1 {
 	display: grid;
 	grid-template-columns: repeat(3, 20vmin);
 	grid-template-rows: repeat(3, 20vmin);
-	background-color: lightgrey;
-	border-radius: 5vmin;
+	background-color: #000000;
 }
 
 #board>div {
-	margin: 3vmin;
+	margin: 1.5vmin;
 	background-color: white;
-	border: 1vmin solid white;
-	border-radius: 50%;
+	border: 1vmin solid #a2cef7;
 }
 
 #board>div.avail {
@@ -37,7 +42,7 @@ h1 {
 }
 
 #board>div.avail:hover {
-	border-color: grey;
+	border-color: #FFFAD2;
 }
 
 button {
