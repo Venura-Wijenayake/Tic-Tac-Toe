@@ -34,7 +34,7 @@ h1 {
 }
 
 #board>div {
-	margin: 1.5vmin;
+	margin: 2vmin;
 	background-color: white;
 	border: 1vmin solid #a2cef7;
 }

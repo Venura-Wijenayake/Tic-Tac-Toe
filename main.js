@@ -10,8 +10,9 @@ const PLAYER_LOOKUP = {
 	'-1': "O"
 };
 
-/*----- Table of Win conditions!!!!----*/
-const winningCombos = [
+
+/*----- Table of Win conditions ----*/
+const winConditions = [
 	[0, 1, 2],
 	[3, 4, 5],
 	[6, 7, 8],
@@ -44,8 +45,8 @@ function init() {
 	render();
 }
 
-function handleMove(evt) {
-	const idx = parseInt(evt.target.id.replace('grid-', ''));
+function handleMove(event) {
+	const idx = parseInt(event.target.id.replace('grid-', ''));
 
 	if (isNaN(idx) || board[idx] || winner)
 		return;
@@ -57,8 +58,11 @@ function handleMove(evt) {
 }
 
 function getWinner() {
-	for (let i = 0; i < winningCombos.length; i++) {
-		if (Math.abs(board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]]) === 3) return board[winningCombos[i][0]];
+	for (let i = 0; i < winConditions.length; i++) {
+		if (Math.abs(board[winConditions[i][0]] +
+			board[winConditions[i][1]] +
+			board[winConditions[i][2]]) === 3)
+			return board[winConditions[i][0]];
 	}
 
 	if (board.includes(null)) return null;
@@ -77,7 +81,23 @@ function renderBoard() {
 	board.forEach(function(sqVal, idx) {
 		const squareEl = document.getElementById(`grid-${idx}`);
 		squareEl.style.backgroundColor = COLOR_LOOKUP[sqVal];
-		// Add class if square available for hover effect
+
+		/* ------- Note
+		I wanted to replace the colors 'black' and 'white' with an image of 'X' or 'O',
+		But I have no idea how to do that right know, my guess was to use one of the following:
+
+	 		Attempt 1
+			const img = document.createElement("img");
+			img.src = "Cross.png";
+
+			Attempt 2
+			squareEl.style.backgroundImage = "url('cross.png')";
+
+		I need help with achieving this.
+
+		*/
+
+		// Hover effect
 		squareEl.className = !sqVal ? 'avail' : '';
 	});
 }
@@ -86,8 +106,8 @@ function renderMessage() {
 	if (winner === 'T') {
 		message.innerHTML = "It's a tie!";
 	} else if (winner) {
-		message.innerHTML = `Congrats <span style="color: ${COLOR_LOOKUP[winner]}">${PLAYER_LOOKUP[winner].toUpperCase()}</span>!`;
+		message.innerHTML = `Congrats (<span style="color: ${COLOR_LOOKUP[winner]}">${PLAYER_LOOKUP[winner].toUpperCase()}</span>)!`;
 	} else {
-		message.innerHTML = `<span style="color: ${COLOR_LOOKUP[turn]}">${PLAYER_LOOKUP[turn].toUpperCase()}</span>'s Turn`;
+		message.innerHTML = `(<span style="color: ${COLOR_LOOKUP[turn]}">${PLAYER_LOOKUP[turn].toUpperCase()}</span>)'s Turn`;
 	}
 }
