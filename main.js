@@ -86,3 +86,5 @@ function renderMessage() {
 		message.innerHTML = `<span style="color: ${COLOR_LOOKUP[turn]}">${COLOR_LOOKUP[turn].toUpperCase()}</span>'s Turn`;
 	}
 }
+
+// WIP
