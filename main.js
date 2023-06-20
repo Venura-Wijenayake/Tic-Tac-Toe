@@ -73,7 +73,6 @@ function renderBoard() {
 		const squareEl = document.getElementById(`grid-${idx}`);
 		squareEl.style.backgroundColor = COLOR_LOOKUP[sqVal];
 		squareEl.style.borderColor = "red";
-		// Add class if square available for hover effect
 		squareEl.className = !sqVal ? 'avail' : '';
 	});
 }
