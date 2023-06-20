@@ -1,8 +1,13 @@
 /*----- constants -----*/
 const COLOR_LOOKUP = {
-	'1': 'white',
-	'-1': 'black',
+	'1': 'black',
+	'-1': 'white',
 	'null': 'grey'
+};
+
+const PLAYER_LOOKUP = {
+	'1': "X",
+	'-1': "O"
 };
 
 /*----- Table of Win conditions!!!!----*/
@@ -72,7 +77,7 @@ function renderBoard() {
 	board.forEach(function(sqVal, idx) {
 		const squareEl = document.getElementById(`grid-${idx}`);
 		squareEl.style.backgroundColor = COLOR_LOOKUP[sqVal];
-		squareEl.style.borderColor = "red";
+		// Add class if square available for hover effect
 		squareEl.className = !sqVal ? 'avail' : '';
 	});
 }
@@ -81,10 +86,8 @@ function renderMessage() {
 	if (winner === 'T') {
 		message.innerHTML = "It's a tie!";
 	} else if (winner) {
-		message.innerHTML = `Congrats <span style="color: ${COLOR_LOOKUP[winner]}">${COLOR_LOOKUP[winner].toUpperCase()}</span>!`;
+		message.innerHTML = `Congrats <span style="color: ${COLOR_LOOKUP[winner]}">${PLAYER_LOOKUP[winner].toUpperCase()}</span>!`;
 	} else {
-		message.innerHTML = `<span style="color: ${COLOR_LOOKUP[turn]}">${COLOR_LOOKUP[turn].toUpperCase()}</span>'s Turn`;
+		message.innerHTML = `<span style="color: ${COLOR_LOOKUP[turn]}">${PLAYER_LOOKUP[turn].toUpperCase()}</span>'s Turn`;
 	}
 }
-
-// WIP

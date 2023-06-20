@@ -10,18 +10,20 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #f4cccc;
+	background-color: #313131;
 }
 
 header {
 	font-size: 4vmin;
-	color: #000000;
+	color: #ffffff;
 	letter-spacing: 1vmin;
+	font-family: 'Tilt Prism', cursive;
 }
 
 h1 {
 	margin-top: 0;
 	margin-bottom: 5vmin;
+	font-family: 'Marcellus SC', serif;
 }
 
 #board {
@@ -52,6 +54,7 @@ button {
 	color: white;
 	border-radius: 2vmin;
 	font-size: 4vmin;
+	font-family: 'Bruno Ace SC', cursive;
 }
 
 button:disabled {
@@ -63,5 +66,3 @@ button:hover:not(:disabled) {
 	background-color: white;
 	color: grey;
 }
-
-/* Wip */ 
